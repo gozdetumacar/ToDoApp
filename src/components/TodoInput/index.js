@@ -1,23 +1,42 @@
 import React, { useState } from 'react';
-import Modal from 'react-modal';
 
-function TodoInput() {
+function TodoInput(props) {
 
     var date = new Date();
 
-    const [modalIsOpen, setModalIsOpen] = useState(false);
+    const [input, setInput] = useState('');
+
+    const handleChange = e => {
+        setInput(e.target.value);
+    }
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+
+        props.onSubmit({
+            id: Math.floor(Math.random() * 10000),
+            text: input
+        })
+
+        setInput('');
+    };
+
 
     return (
         <div>
             <h4>Merhaba, bugün {date.toLocaleDateString()}</h4>
-            <button onClick={() => setModalIsOpen(true)}>ekle</button>
-            <Modal
-                isOpen={modalIsOpen}
-                onRequestClose={() => setModalIsOpen(false)}
-            >
-                <h2>Bu bir modal</h2>
-                <button onClick={() => setModalIsOpen(false)}>Kapat</button>
-            </Modal>
+            <form onSubmit={handleSubmit}>
+                <label>
+                    <input
+                        type="text"
+                        name="text"
+                        placeholder={'Bir not ekleyin'}
+                        value={input}
+                        onChange={handleChange} />
+                </label>
+                <input type="submit" value="Submit" />
+            </form>
+
         </div>
     )
 }
