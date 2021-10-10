@@ -1,0 +1,56 @@
+.firstContainer {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding-left: 5%;
+    padding-right: 5%;
+    padding-bottom: 2%;
+}
+
+h4.welcomeText{
+    font-size: 20px;
+    color: #D5E6FF;
+    padding-left: 5%;
+}
+
+.inputForm {
+    padding-bottom: 1%;
+    padding-top: 1%;
+    font-family: 'Gemunu Libre';
+    font-size: 20px;
+    width: 70%;
+    border-radius: 7px;
+    border: none;
+    color: #333333;
+    display:inline;
+    position: absolute;
+}
+
+@media screen and (max-width: 600px) {
+  .inputForm{
+    width: 60%;
+  }
+}
+
+@media screen and (max-width: 700px) {
+  .inputForm{
+    width: 55%;
+  }
+}
+
+.submitButton {
+    background-color: #2560C1;
+    border: none;
+    border-color: #2560C1;
+    cursor: pointer;
+    color: #333333;
+    position: relative;
+}
+
+.submitIcon {
+    padding: 3%;
+    font-size: 30px;
+    color: #D5E6FF;
+    position: relative;
+}
+

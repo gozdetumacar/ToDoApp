@@ -1,4 +1,8 @@
 import React, { useState } from 'react';
+import './styles.css'
+import { AiFillPlusCircle } from 'react-icons/ai';
+
+
 
 function TodoInput(props) {
 
@@ -22,23 +26,39 @@ function TodoInput(props) {
     };
 
 
+
+
     return (
+
         <div>
-            <h4>Merhaba, bugün {date.toLocaleDateString()}</h4>
-            <form onSubmit={handleSubmit}>
-                <label>
+            <h4 className="welcomeText">Merhaba, bugün {date.toLocaleDateString()}</h4>
+
+            <form className="firstContainer" onSubmit={handleSubmit}>
+                <div >
+
+                    <label >
+
                     <input
+                            className="inputForm"
                         type="text"
                         name="text"
                         placeholder={'Bir not ekleyin'}
                         value={input}
                         onChange={handleChange} />
-                </label>
-                <input type="submit" value="Submit" />
-            </form>
+                    </label></div>
+                <div>
+                    <button
+                        className="submitButton"
+                        type="submit"
+                    >
+                        <AiFillPlusCircle className="submitIcon" />
+                    </button></div>
 
+            </form>
         </div>
+
     )
 }
+
 
 export default TodoInput;
