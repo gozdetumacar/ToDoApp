@@ -3,17 +3,14 @@
 body {
   background-color: #C9DFFF;
   font-family: 'Gemunu Libre';
- 
 }
 
 .container {
-  
   background-color: #2560C1;
   width: 50%;
   position: absolute;
   left: 25%;
   top: 25%;
-
   border-radius: 15px;
   
 }

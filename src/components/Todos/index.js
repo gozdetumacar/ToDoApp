@@ -1,49 +1,38 @@
-import React, { useState } from 'react';
-import { DragDropContext, Draggable, Droppable } from 'react-beautiful-dnd';
+import React from 'react';
+import { Draggable } from 'react-beautiful-dnd';
 import { MdDeleteForever } from 'react-icons/md';
+import { AiOutlineMenu } from 'react-icons/ai';
+
 import './styles.css';
 
-function Todos({ todos, completeTodo, removeTodo }) {
-
-    const onDragEnd = (result) => {
-        console.log(result)
-    }
+function Todos({ todos, removeTodo }) {
 
     return todos.map((todo, index) => (
-        <DragDropContext onDragEnd={onDragEnd}>
-            <Droppable droppableId='123456'>
-                {(provided) => (
-                    <div
-                        ref={provided.innerRef}
-                        {...provided.droppableProps}>
-                        <Draggable draggableId={todo.id.toString()} index={index}>
-                            {(provided) => (
-                                <div
-                                    key={todo.id.toString()}
-                                    className="listContainer"
-                                    {...provided.draggableProps}
-                                    {...provided.dragHandleProps}
-                                    ref={provided.innerRef}
-                                >
-                                    <div id="list" className="listTitle" key={todo.id} onClick={() => completeTodo(todo.id)}>
-                {todo.text}
-            </div>
-                                    <div className="removeIcon">
-                <MdDeleteForever onClick={() => removeTodo(todo.id)} />
-            </div>
-                                </div>
-                            )}
+        <Draggable draggableId={todo.id.toString()} index={index}>
+            {(provided) => (
+                <div key={todo.id.toString()}
+                    className="listContainer"
+                    {...provided.draggableProps}
+                    {...provided.dragHandleProps}
+                    ref={provided.innerRef}>
 
-                        </Draggable>
-                        {provided.placeholder}
+                    <div className="listTitle">
+                        <div className="sortIcon">
+                            <AiOutlineMenu />
+                        </div>
+                        <div>
+                            {todo.text}
+                        </div>
+
+
                     </div>
-                )}
-
-            </Droppable>
-        </DragDropContext>
+                    <div className="removeIcon">
+                        <MdDeleteForever onClick={() => removeTodo(todo.id)} />
+                    </div>
+                </div>
+            )}
+        </Draggable>
     ))
-
 }
-
 
 export default Todos;
